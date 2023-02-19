@@ -403,7 +403,7 @@
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Methods': 'PUT, GET, HEAD, POST, DELETE, OPTIONS'
          },
-         url: 'https://atcs-dishub.bandung.go.id:1990/Cibeureum/index.m3u8',
+         url: url,
          processData: false,
          success: function (data) {
             const video = document.getElementById('stream-cctv');
