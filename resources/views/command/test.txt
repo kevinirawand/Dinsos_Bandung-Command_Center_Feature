@@ -1,0 +1,139 @@
+// window.addEventListener('touchmove', ev => {
+//   if (ev.touches.length > 1) {
+//    //  ev.preventDefault();
+//     ev.stopImmediatePropagation();
+//   };
+// }, { passive: false });
+
+// window.addEventListener('touchstart', ev => {
+//   ev.preventDefault();
+// }, { passive: false });
+   
+
+//    jQuery.extend({
+//       getValues: function(url) {
+//          var result = null;
+//          $.ajax({
+//                url: url,
+//                type: 'get',
+//                dataType: 'JSON',
+//                async: false,
+//                success: function(data) {
+//                   result = data;
+//                }
+//          });
+//          return result;
+//       }
+//    });
+
+   // const results = $.getValues("http://localhost:1337/cctv/cctv-location");
+   // console.info(results.data.cctvLocationArr[0].longitude)
+
+   var mymap = L.map('map-marker').setView([-6.9034495, 107.6431575], 10);
+
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+      id: 'mapbox.streets'
+   }).addTo(mymap);
+
+
+   for (var i = 0; i < results.length; i++) {
+      marker = new L.marker(['500129', '1200002']).addTo(mymap);   
+   }
+
+   function customPopup() {
+      MicroModal.init();
+      MicroModal.show('modal-1');
+   };
+
+   mymap.eachLayer((l) => {
+      l.on('click', customPopup);
+
+      l.on('mouseover', function() {
+         
+         const getMarkerLocation = l.getLatLng();
+
+         let locationName = "";
+         let lat_location = "";
+         let lon_location = "";
+         for (const location in locations) {
+            if (getMarkerLocation.lat == locations[location].lat_lokasi) {
+               locationName = locations[location].nama_lokasi;
+               lat_location = locations[location].lat_lokasi;
+               lon_location = locations[location].lon_lokasi;
+            }
+         }
+
+         l.bindPopup(locationName).openPopup();
+      })
+   });
+
+
+
+   
+
+   // function getAllCctvLocation() {
+      // let locations = [];
+      
+      // fetch('http://localhost:1337/cctv/cctv-location')
+      // .then(response => response.json())
+      // .then(data => {
+      //    // loop through the response data
+      //    for (const location in data.data.cctvLocationArr) {
+      //       let datas = data.data.cctvLocationArr[location]
+      //       locations.push(datas);
+      //    }
+      // })
+      // .catch(error => {
+      //    // handle errors here
+      //    console.error(error)
+      //   });
+      
+      // console.info(locations[0])
+      // $.ajax({
+      //       url : "http://localhost:1337/cctv/cctv-location",
+      //       type: "GET",
+      //       dataType: "JSON",
+      //       success: function(data) {
+      //          console.info(data);
+      //          for (let i = 0; i < data.data.cctvLocationArr; i++) {
+      //             locations.push(data.data.cctvLocationArr[i]);
+      //          }
+      //       console.info(locations)
+               
+      //       },
+      //       error: function (jqXHR, textStatus , errorThrown) {
+      //           console.log(errorThrown);
+      //       }
+      //   });
+   // }
+   
+   
+
+   
+
+
+   // $.(document).ready(() => {
+   // });
+
+   // console.info(locations);
+   // for (location in locations) {
+   // }
+
+   // for (const location in locations) {
+   //    console.info(location);
+   // }
+
+   
+// $(documen).ready(() => {
+   //    $.get('http://localhost:1337/cctv/cctv-location', (data) => {
+
+   //       // console.info(data);
+         
+   //      
+   // });
+
+
+   
+// });
