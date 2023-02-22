@@ -38,7 +38,9 @@ Route::get('/loginadmin', function () {
 Route::get('/command-center/landing-Page', function () {
     return view('command.index'); 
 })->name('command_center');
-
+Route::get('/command-center/landing_Page', function () {
+    return view('command.command'); 
+})->name('command_center.command');
 Route::get('/', [LandingPageController::class, 'index'])->name('wow.data');
 Route::post('post/data', [LandingPageController::class, 'data'])->name('post.data');
 // Route::post('allposts', 'LandingPageController@data' )->name('allposts');

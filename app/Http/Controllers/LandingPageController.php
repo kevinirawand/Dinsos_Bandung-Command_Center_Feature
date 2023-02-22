@@ -19,14 +19,15 @@ class LandingPageController extends Controller
                 'u.Bansos',
                 'u.Kecamatan',
                 'u.Uhc',
+                'u.Card_Id',
                 'u.Dapodik',
             )->orderBy('id', 'DESC');
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->filter(function ($instance) use ($request) {
-                        if (!empty($request->get('Nik'))) {
+                        if (!empty($request->get('Card_Id'))) {
                             $instance->where(function($w) use($request){
-                            $search = $request->get('Nik');
+                            $search = $request->get('Card_Id');
                             $kecamatan = $request->get('carikecamatan');
                             $w->Where($kecamatan, 'LIKE', "%$search%");
                             // ->orWhere($kecamatan, 'LIKE', "%$search%");

@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 @section('content')
 <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('/adminlte/pages/leaflet/leaflet.min.css') }}">
@@ -13,117 +13,25 @@
    .sortable-handler{
       touch-action: none
    }
+        #map-marker {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    
 </style>
-
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> --}}
-
-    <div class="container" >
-        <div class="pull-left">
-            <h2>Maps</h2>
-        </div>
-        <div class="row">
-            <div class="card m-2 col-12 .agile__list">
-                <div class="card-header">
-                    <h3 class="card-title">Point Monitoring</h3>
-                </div>
-                <div class="card-body .agile__list">
-                    <div id="map-marker" class=".agile__list" style="height: 400px;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Simpang Lima</h3>
-              </div>
-              <div class="card-body">
-                      <video id="video1" width="500" controls></video>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">PasirKoja</h3>
-              </div>
-              <div class="card-body">
-                <video id="video" width="500" controls></video>
-              </div>
-            </div>
-          </div>
-          {{-- <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Kiaracondong</h3>
-              </div>
-              <div class="card-body">
-                <video id="video2" width="500" controls></video>
-              </div>
-            </div>
-          </div> --}}
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Merdeka </h3>
-              </div>
-              <div class="card-body">
-                <video id="video3" width="500" controls></video>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Cikapayang-Dago</h3>
-              </div>
-              <div class="card-body">
-                <video id="video4" width="500" controls></video>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{-- <div class="row">
-            <div class="card m-2">
-                <div class="card-header">
-                  <h3 class="card-title">Simpang Lima</h3>
-                </div>
-                  <div class="card-body">
-                    <video id="video1" width="500" controls></video>
-                  </div>
-            </div>
-            <div class="card m-2">
-                <div class="card-header">
-                  <h3 class="card-title">PasirKoja</h3>
-                </div>
-                  <div class="card-body">
-                    <video id="video" width="500" controls></video>
-                  </div>
-            </div>
-            <div class="card m-2">
-              <div class="card-header">
-                <h3 class="card-title">Kiaracondong</h3>
-              </div>
-                <div class="card-body">
-                  <video id="video2" width="500" controls></video>
-                </div>
-          </div>
-        </div> --}}
-    </div>
-    {{-- <script src="assets/vendors/js/base/jquery.min.js"></script>
-    <script src="assets/vendors/js/base/core.min.js"></script> --}}
-
-{{-- <script src="{{ asset('leaflet/maps-leaflet.js') }}"></script>
-<script src="{{asset('js/app.js')}}"></script> --}}
-
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> --}}
-
-
-
-
-
-
+   <div class="card-body .agile__list">
+      
+      <div id="map-marker" class=".agile__list" style="height: 100vh;"></div>
+   </div>  
 
 <!-- SET MICROMODAL -->
 
@@ -139,6 +47,7 @@
          <h2 class="modal__title" id="modal-1-title">
            Micromodal
          </h2>
+         
          <button
            class="modal__close"
            aria-label="Close modal"
@@ -158,7 +67,7 @@
 
 
        </main>
-       <footer class="modal__footer">
+       {{-- <footer class="modal__footer">
          <button class="modal__btn modal__btn-primary">Continue</button>
          <button
            class="modal__btn"
@@ -167,10 +76,11 @@
          >
            Close
          </button>
-       </footer>
+       </footer> --}}
      </div>
    </div>
  </div>
+
 
 <!-- END SET MICROMODAL -->
 
@@ -207,13 +117,13 @@
 
        </main>
        <footer class="modal__footer">
-         <button class="modal__btn modal__btn-primary">Continue</button>
+         {{-- <button class="modal__btn modal__btn-primary">Continue</button> --}}
          <button
            class="modal__btn"
            data-micromodal-close
            aria-label="Close this dialog window"
          >
-           Close
+          kembali
          </button>
        </footer>
      </div>
@@ -258,7 +168,6 @@
       constructor() {
          this.map = null;
       }
-
       this.markers = [];
       
       createMap() {
@@ -274,7 +183,6 @@
          const marker = L.marker([lat, lon]).addTo(this.map);
          this.markers.push(marker);
       }
-
       getAllMarker() {
          return this.markers;
       }
@@ -283,24 +191,19 @@
    }
 </script> --}}
 
-<script>
-   
-   // const map = new MapModel('map-marker');
-
-   // map.createMap();
-
-   const mymap = L.map('map-marker').setView([-6.9034495, 107.6431575], 10);
-
+<script >
+   const mymap = L.map('map-marker').setView([-6.915698869412105, 107.6239203911849], 13);
    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
       id: 'mapbox.streets'
    }).addTo(mymap);
-
-
-   MicroModal.init();
-
-
+   MicroModal.init({
+      onClose: function(modal, element, event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+   });
 </script>
 
 <script>
@@ -309,15 +212,22 @@
       
       showAllCctvLocation();
    })
-
    
    const utilsFunction = {
       customPopup(lat, lng) {
          let cctvId = null;
          MicroModal.show('modal-1');
-
          if ($('#modal-1').hasClass('is-open')) {
-
+            const closeModal = document.querySelectorAll('.modal__close');
+            const theModals = document.querySelectorAll('.micromodal-slide');
+            
+            closeModal.forEach(element => {
+               element.addEventListener('click', () => {
+                  theModals.forEach((modalLayer) => {
+                     modalLayer.classList.remove("is-open");
+                  });
+               });
+            });
             $.ajax({
                url: "http://localhost:1337/cctv/cctv-location/list/" + lat + '&' + lng,
                type: 'get',
@@ -342,13 +252,19 @@
       },
    
       modalContentLoop(item) {
-         content += `<li class="cctv-list-anchor" url-data="${item.stream}"><p>${item.nama_cctv}</p>`
+         content += `<div class="card text-center" style="width: 35rem; background-color: #e2e3e5;">
+                        <div class="d-flex justify-content-center mt-4">
+                           <img class="card-img-top cctv-list-anchor " src="{{ asset('assets/images/video-play.png') }}" url-data="${item.stream}" alt="Card image cap" style="max-width: 100px;">
+                        </div>
+                       
+                        <div class="card-body">
+                           <div class="cctv-list-anchor text-center" url-data="${item.stream}"><p>${item.nama_cctv}</p></div>
+                        </div>
+                     </div>`
       }
    }
-
    const showAllCctvLocation = () => {
       let locations = null;
-
       $.ajax({
          url: "http://localhost:1337/cctv/cctv-location",
          type: 'get',
@@ -362,20 +278,16 @@
          }
       });
       
-
       for (let i = 0; i < locations.length; i++) {
          marker = new L.marker([locations[i].latitude, locations[i].longitude])
          .addTo(mymap);
       }
-
       mymap.eachLayer((l) => {
             l.on('click', () => {
                utilsFunction.customPopup(l._latlng.lat, l._latlng.lng)
             });
-
             l.on('mouseover', function() {
                const getMarkerLocation = l.getLatLng();
-
                let locationName = "";
                let lat_location = "";
                let lon_location = "";
@@ -389,10 +301,8 @@
                l.bindPopup(locationName).openPopup();
             })
       })
-
       
    }
-
    const showCctvStream = (url) => {
       $.ajax({
          type: "GET",
@@ -407,14 +317,12 @@
          processData: false,
          success: function (data) {
             const video = document.getElementById('stream-cctv');
-
             var hls = window.hls = new Hls({
                capLevelToPlayerSize: true,
                debug: true,
             });
             hls.loadSource(url);
             hls.attachMedia(video);
-
             const setNewSource = () => {
                hls.on(Hls.Events.MEDIA_DETACHED, () => {
                   hls.attachMedia(video);
@@ -423,23 +331,15 @@
                console.log(hls.autoLevelCapping);
                hls.detachMedia();
             };
-
             const onManifestParsedOnce = () => {
                hls.off(Hls.Events.MANIFEST_PARSED, onManifestParsedOnce);
                setTimeout(setNewSource, 1000);
             };
-
             hls.on(Hls.Events.MANIFEST_PARSED, onManifestParsedOnce);
          }
       });
-
       MicroModal.show('modal-2');
    }
-   
-
-   
-   
-
 </script>
 
 {{-- <script>
@@ -461,7 +361,6 @@
          video.play();
       });
    }
-
    if (Hls.isSupported()) {
       var video1 = document.getElementById('video1');
       var hls1 = new Hls();

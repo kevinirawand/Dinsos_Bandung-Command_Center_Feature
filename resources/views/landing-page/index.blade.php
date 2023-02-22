@@ -115,8 +115,8 @@
                                             <div class="">
                                                         <option class="text-center" value='' disabled>-- cari berdasarkan --</option>
                                                         {{-- <option value='u.Nama'>Nama</option> --}}
-                                                        {{-- <option value='u.Kecamatan'>Kecamatan</option> --}}
-                                                        <option value='u.Nik' selected >NIK</option>
+                                                        <option value='u.Nik'>NIK</option>
+                                                        <option value='u.Card_Id' selected >KATAYANA</option>
                                             </div>
                                         </select>
                                     <input name="filter_field_search[]" type="text" id="filter" class="form-control" onkeyup="manage(this)"> 
@@ -126,6 +126,7 @@
                                     {{-- <table class="table" > --}}
                                         <thead>
                                         <tr>
+                                            <th>Card_Id</th>
                                             <th>Nik</th>
                                             <th>Nama</th>
                                             <th>Kecamatan</th>
@@ -271,12 +272,14 @@
                       },
                      
                       columns: [
+                          {data: "Card_Id", className: 'Card_Id'},
                           {data: "Nik", className: 'Nik'},
                           {data: "Nama", className: 'Nama'},
                           {data: "Kecamatan", className: 'Kecamatan'},
                           {data: "Bansos", className: 'Bansos'},
                           {data: "Uhc", className: 'UHC'},
                           {data: "Dapodik", className: 'Dapodik'},
+                       
                           // {data: 'action', name: 'action', orderable: false, searchable: false}
                       ]  
                 });
