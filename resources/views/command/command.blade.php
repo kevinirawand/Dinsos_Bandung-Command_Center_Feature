@@ -37,7 +37,13 @@
             <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
             <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
           </div>
-          <a class="navbar-left" href="#"><img src="{{ asset('assets/images/logo(2).png') }}" width="40%" style="margin-bottom: 2px" alt=""></a>
+          <a class="navbar-brand" href="#">
+            <a class="navbar-left" href="#">
+              <img src="{{ asset('assets/images/logo(2).png') }}" width="40%" style="margin-bottom: 2px" alt="">
+            </a>
+           
+          </a>
+
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="search">
@@ -46,7 +52,7 @@
                 <span id="searchicon" class="fa fa-search form-control-feedback"></span>
             </div>
           </form>
-          {{-- <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav">
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
             <li class="dropdown">
               <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
@@ -67,7 +73,7 @@
                 </ul>
             </li>
             <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li>
-          </ul> --}}
+          </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
